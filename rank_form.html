@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Rank Allotment</title>
+</head>
+<body>
+    <h1>Rank Allotment</h1>
+    <h2>Submit Rank</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ rank_form.as_p }}
+        <button type="submit">Submit Rank</button>
+    </form>
+
+    <h2>Submit Test Case</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ test_case_form.as_p }}
+        <button type="submit">Submit Test Case</button>
+    </form>
+
+    <h2>Test Cases Results</h2>
+    <table border="1">
+        <tr>
+            <th>Test Case ID</th>
+            <th>Input Rank</th>
+            <th>Expected Department</th>
+            <th>Result</th>
+            <th>Class</th>
+        </tr>
+        {% for result in test_results %}
+        <tr>
+            <td>{{ result.test_case_id }}</td>
+            <td>{{ result.input_rank }}</td>
+            <td>{{ result.expected_department }}</td>
+            <td>{{ result.result }}</td>
+            <td>{{ result.class }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

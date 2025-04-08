@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Cases</title>
+</head>
+<body>
+    <h1>Define Test Cases</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Add Test Case</button>
+    </form>
+
+    <h2>Current Test Cases</h2>
+    <table border="1">
+        <tr>
+            <th>Rank</th>
+            <th>Department</th>
+            <th>Expected Result</th>
+        </tr>
+        {% for case in test_cases %}
+        <tr>
+            <td>{{ case.rank }}</td>
+            <td>{{ case.department }}</td>
+            <td>{{ case.expected_result }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
